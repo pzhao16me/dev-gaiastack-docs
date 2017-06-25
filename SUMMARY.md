@@ -12,5 +12,9 @@
   * [云硬盘](chapter1/35yun-ying-pan.md)
   * [编排模板](chapter1/36bian-pai-mo-ban.md)
 * [API文档](apiwen-dang.md)
+  * gate接口文档
+    * 认证接口
+    * 列表接口
+    * 集群信息接口
 * 常见问题
 
