@@ -30,8 +30,7 @@
   * [compose类型编排语法](apiwen-dang/composelei-xing-bian-pai-yu-fa.md)
   * Pod类型编排语法
   * 接口数据结构说明
-  * 样例
+  * [样例](apiwen-dang/yang-li.md)
   * 常见问题
-* 常见问题
 * 常见问题
 
