@@ -17,7 +17,7 @@ API文档
 	- [instance接口](/apiwen-dang/ji-qun-jie-kou-wen-dang/instancejie-kou.md)
 	- [container接口](/apiwen-dang/ji-qun-jie-kou-wen-dang/containerjie-kou.md)
 	- [volume接口](/apiwen-dang/ji-qun-jie-kou-wen-dang/volinmejie-kou.md)
-	- pod编排接口
+	- [pod编排接口](/apiwen-dang/ji-qun-jie-kou-wen-dang/podbian-pai-jie-kou.md)
 	- [compose编排接口](/apiwen-dang/composelei-xing-bian-pai-yu-fa.md)
 	- [名字服务接口](/apiwen-dang/ji-qun-jie-kou-wen-dang/ming-zi-fu-wu-jie-kou.md)
 	- [loadbalance接口](/apiwen-dang/ji-qun-jie-kou-wen-dang/loadbalancejie-kou.md)
