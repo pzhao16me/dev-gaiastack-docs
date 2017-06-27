@@ -1,3 +1,11 @@
-# My Awesome Book
+#GaiaStack简介
+GaiaStack是一款云实例服务平台，提供了从code到cloud的一站式解决方案，覆盖开发、测试、构建、部署、运维等所有环节，简化了环境的部署和依赖，改变了应用的交付模式；让应用开发者像使用一台超级计算机一样使用整个集群，极大地降低了资源管理门槛。自动化的作业调度、资源保证和隔离，让多业务共享集群，提升资源使用率的同时，具备很高的伸缩性和可靠性。
 
-This file file serves as your book's preface, a great place to describe your book's content and ideas.
+您可以几个方面了解如何使用GaiaStack云实例服务平台：
+
+* 操作指南
+
+* API文档
+
+* 常见问答
+
