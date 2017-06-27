@@ -3,7 +3,7 @@ GaiaStack是一款云实例服务平台，提供了从code到cloud的一站式�
 
 您可以几个方面了解如何使用GaiaStack云实例服务平台：
 
-* 操作指南
+* [操作指南](/chapter1.md)
 
 * API文档
 

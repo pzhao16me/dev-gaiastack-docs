@@ -23,7 +23,7 @@
     * [volume接口](apiwen-dang/ji-qun-jie-kou-wen-dang/volinmejie-kou.md)
     * pod编排接口
     * compose编排接口
-    * 名字服务接口
+    * [名字服务接口](apiwen-dang/ji-qun-jie-kou-wen-dang/ming-zi-fu-wu-jie-kou.md)
     * [loadbalance接口](apiwen-dang/ji-qun-jie-kou-wen-dang/loadbalancejie-kou.md)
   * [错误码](apiwen-dang/cuo-wu-ma.md)
   * [名词说明](apiwen-dang/ming-ci-shuo-ming.md)
