@@ -1,185 +1,83 @@
-# compose编排接口
+# Compose 类型编排语法
 
-**path 参数说明**
+> compose 类型编排支持类似compose语法，支持使用一个compose编排模板一次提交多个相互关联的应用。
 
-> projectName: 业务名
+## Compose基本语法
 
-> composeName: compose名
+### image
 
-## 创建compose编排
+编排容器的镜像，如 `public/helloworld:latest`, 目前不支持`docker.oa.com:8080`前缀
 
-`POST /v2/composes/{projectName}`
+### command
 
-**请求body**
+容器启动命令，如 `/run.sh arg1`。如果不填会使用image默认的启动命令启动
 
-```json
-{
-  "stackInstanceName": "compose",
-  "content": "c1:\n    image: docker.oa.com:8080/public/helloworld\n    replicas: 2\n    mem_limit: 256m\n    cpu_shares: 1\n    environment:\n        CONTAINER_NAME: c1\n        app_NAME: app-c1\n    links:\n        - c2\n        - c3\nc2:\n    image: docker.oa.com:8080/public/helloworld\n    replicas: 1\n    mem_limit: 256m\n    cpu_shares: 1\n    environment:\n        CONTAINER_NAME: c2\n        app_NAME: app-c2\nc3:\n    image: docker.oa.com:8080/public/helloworld\n    replicas: 3\n    mem_limit: 128m\n    cpu_shares: 1\n    environment:\n        CONTAINER_NAME: c3\n        app_NAME: app-c3\n"
-}
-```
+### replicas
 
-**返回**
+应用实例数
 
-```json
-{
-  "Code": 0,
-  "Message": ""
-}
-```
+### links
 
-## 获取compose编排
+依赖的其他编排app名字，数组类型
 
-`GET /v2/composes/{projectName}/{composeName}`
+### environment
 
-**返回**
+环境变量，map类型.
 
-```json
-{
-  "id": "0f848c4aacecea4718089c1ca22af842d625760ed9c2491a94a35e1eab9c297d",
-  "stackName": "compose",
-  "stackContent": "c1:\n    image: docker.oa.com:8080/public/helloworld\n    replicas: 2\n    mem_limit: 256m\n    cpu_shares: 1\n    environment:\n        CONTAINER_NAME: c1\n        app_NAME: app-c1\n    links:\n        - c2\n        - c3\nc2:\n    image: docker.oa.com:8080/public/helloworld\n    replicas: 1\n    mem_limit: 256m\n    cpu_shares: 1\n    environment:\n        CONTAINER_NAME: c2\n        app_NAME: app-c2\nc3:\n    image: docker.oa.com:8080/public/helloworld\n    replicas: 3\n    mem_limit: 128m\n    cpu_shares: 1\n    environment:\n        CONTAINER_NAME: c3\n        app_NAME: app-c3\n",
-  "appNum": 3,
-  "instanceNum": 6,
-  "projectName": "default",
-  "createAt": "2016-10-17T14:07:14+08:00",
-  "lastUpdate": "2016-10-17T14:07:19+08:00",
-  "status": "RUNNING",
-  "userName": "testUserName",
-  "images": "docker.oa.com:8080/public/helloworld:latest, docker.oa.com:8080/public/helloworld:latest, docker.oa.com:8080/public/helloworld:latest",
-  "stackApps": [
-    {
-      "AppID": "02263cb535e1f31dd090ca540834913ec3c2fc6d794641712d205e21544fdd35",
-      "Cmd": "",
-      "Created": "2016-10-17T14:07:16+08:00",
-      "UpdatedAt": "2016-10-17T14:07:27+08:00",
-      "DockerDataDir": "",
-      "DockerLogDir": "",
-      "Environments": null,
-      "Image": "docker.oa.com:80/docker.oa.com:8080/public/helloworld:latest",
-      "InstanceNum": 2,
-      "InstanceSummary": "{\"PENDING\":2}",
-      "Name": "compose-c1",
-      "PortsInfo": null,
-      "ProjectName": "default",
-      "Status": "RUNNING",
-      "Username": "testUserName",
-      "ResInfo": {
-        "cpu": "",
-        "mem": ""
-      },
-      "Volumes": "",
-      "NetworkType": 0,
-      "StackInstanceID": "0f848c4aacecea4718089c1ca22af842d625760ed9c2491a94a35e1eab9c297d"
-    },
-    {
-      "AppID": "73c6a2968c07117f374ca66234445a31d051d40b522f30502e39dcaaa4159622",
-      "Cmd": "",
-      "Created": "2016-10-17T14:07:17+08:00",
-      "UpdatedAt": "2016-10-17T14:07:24+08:00",
-      "DockerDataDir": "",
-      "DockerLogDir": "",
-      "Environments": null,
-      "Image": "docker.oa.com:80/docker.oa.com:8080/public/helloworld:latest",
-      "InstanceNum": 1,
-      "InstanceSummary": "{\"PENDING\":1}",
-      "Name": "compose-c2",
-      "PortsInfo": null,
-      "ProjectName": "default",
-      "Status": "RUNNING",
-      "Username": "testUserName",
-      "ResInfo": {
-        "cpu": "",
-        "mem": ""
-      },
-      "Volumes": "",
-      "NetworkType": 0,
-      "StackInstanceID": "0f848c4aacecea4718089c1ca22af842d625760ed9c2491a94a35e1eab9c297d"
-    },
-    {
-      "AppID": "cfbb95973ee33147b64753e9cdebc56f278f841c5f2f213787a97b56f695ea6a",
-      "Cmd": "",
-      "Created": "2016-10-17T14:07:18+08:00",
-      "UpdatedAt": "2016-10-17T14:07:30+08:00",
-      "DockerDataDir": "",
-      "DockerLogDir": "",
-      "Environments": null,
-      "Image": "docker.oa.com:80/docker.oa.com:8080/public/helloworld:latest",
-      "InstanceNum": 3,
-      "InstanceSummary": "{\"PENDING\":2}",
-      "Name": "compose-c3",
-      "PortsInfo": null,
-      "ProjectName": "default",
-      "Status": "RUNNING",
-      "Username": "testUserName",
-      "ResInfo": {
-        "cpu": "",
-        "mem": ""
-      },
-      "Volumes": "",
-      "NetworkType": 0,
-      "StackInstanceID": "0f848c4aacecea4718089c1ca22af842d625760ed9c2491a94a35e1eab9c297d"
-    }
-  ],
-  "relations": {
-    "c1": {
-      "Image": "docker.oa.com:8080/public/helloworld:latest",
-      "image_pic": "/v2/registry/imagePic/public/helloworld",
-      "Command": "",
-      "replicas": 2,
-      "Links": [
-        "c2",
-        "c3"
-      ],
-      "Environment": {
-        "CONTAINER_NAME": "c1",
-        "app_NAME": "app-c1"
-      },
-      "Volumes": null,
-      "MemLimit": "256m",
-      "CPUShares": "1"
-    },
-    "c2": {
-      "Image": "docker.oa.com:8080/public/helloworld:latest",
-      "image_pic": "/v2/registry/imagePic/public/helloworld",
-      "Command": "",
-      "replicas": 1,
-      "Links": null,
-      "Environment": {
-        "CONTAINER_NAME": "c2",
-        "app_NAME": "app-c2"
-      },
-      "Volumes": null,
-      "MemLimit": "256m",
-      "CPUShares": "1"
-    },
-    "c3": {
-      "Image": "docker.oa.com:8080/public/helloworld:latest",
-      "image_pic": "/v2/registry/imagePic/public/helloworld",
-      "Command": "",
-      "replicas": 3,
-      "Links": null,
-      "Environment": {
-        "CONTAINER_NAME": "c3",
-        "app_NAME": "app-c3"
-      },
-      "Volumes": null,
-      "MemLimit": "128m",
-      "CPUShares": "1"
-    }
-  }
-}
-```
+Compose编排会设置一些默认的环境变量，会把yaml文件中设置的container名字变成大写后设置成环境，值为利用这个container模版创建的app名称。用户可以利用这个环境变量进行名字服务，例如container名字为app1, 如果需要使用这个container对应的实际app名字，可以使用$(APP1)进行引用，见下面例子。
 
-## 删除compose编排
+### volumes
 
-`DELETE /v2/composes/{projectName}/{composeName}`
+需要挂载的云盘，数组类型，云盘需要提前创建好并处于可用状态，格式为 云盘名称:容器挂载路径
 
-**返回**
+### mem_limit
 
-```json
-{
-  "Code": 0,
-  "Message": ""
-}
+内存的需求量，如256Mi, 1Gi
+
+### cpu_shares
+
+CPU需求量，如10
+
+### ports
+
+端口映射，数组类型，格式为 主机端口:容器端口/协议，协议支持tcp/udp
+
+### log_dir
+
+日志目录，需填写绝对路径
+
+### data_dir
+
+数据目录，需填写绝对路径
+
+## Compose编排模板样例
+
+```yaml
+helloworld:
+    image: public/phpmyadmin:latest
+    replicas: 1
+    mem_limit: 256Mi
+    command: /run.sh phpmyadmin
+    cpu_shares: 0.2
+    environment:
+        CONTAINER_NAME: helloworld
+        APP_NAME: $(HELLOWORLD) # 得知自己的名字
+        PMA_HOST: $(DB) # 引用db container的APP名字，用作mysql的host进行访问
+        MYSQL_ROOT_PASSWORD: 123456
+    links:
+        - db
+db:
+    image: public/mysql
+    replicas: 1
+    mem_limit: 256Mi
+    cpu_shares: 0.1
+    command: /entrypoint.sh mysqld
+    environment:
+        CONTAINER_NAME: db
+        APP_NAME: $(DB)
+        MYSQL_ROOT_PASSWORD: 123456
+    volumes:
+        - mysql:/var/lib/mysql
+
+ 因为有helloworld和db两个container定义在yaml中，所以这个模版创建的两个app，都会默认有 `HELLOWORLD=${stackname}-helloworld DB=${stackname}-db` 两个环境变量
 ```
