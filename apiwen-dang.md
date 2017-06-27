@@ -24,9 +24,9 @@ API文档
 * [错误码](/apiwen-dang/cuo-wu-ma.md)
 * [名词说明](/apiwen-dang/ming-ci-shuo-ming.md)
 * [header说明](/apiwen-dang/headershuo-ming.md)
-* [样例](/apiwen-dang/yang-li.md)
 * [Compose 类型编排语法](/apiwen-dang/composelei-xing-bian-pai-yu-fa.md)
 * [Pod 类型编排语法](/apiwen-dang/podlei-xing-bian-pai-yu-fa.md)
 * [接口数据结构说明](/apiwen-dang/jie-kou-shu-ju-jie-gou-shuo-ming.md)
+* [样例](/apiwen-dang/yang-li.md)
 * [常见问题](/apiwen-dang/chang-jian-wen-ti.md)
 
